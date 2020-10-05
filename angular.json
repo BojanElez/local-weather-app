@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "local-weather-app"
+    }
+  },
+  "defaultProject": "local-weather-app",
+  "cli": {
+    "analytics": "bd1f7e16-959c-4a7c-bde7-c180e8a634a6"
+  }
 }
