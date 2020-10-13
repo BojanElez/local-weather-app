@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { errorMonitor } from 'events';
+import { AppModule } from '../app.module';
 import { ICurrentWeather } from '../interfaces.model';
 import { WeatherService } from '../weather/weather.service';
 
@@ -8,24 +10,20 @@ import { WeatherService } from '../weather/weather.service';
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent implements OnInit {
-  current: ICurrentWeather;
+  @Input() current: ICurrentWeather;
+  @Input() currentLoc: ICurrentWeather;
+  @Input() currentStatus: boolean;
+  @Input() errorMessage: string;
 
   constructor(private weatherService: WeatherService) {
-    this.current = {
-      city: '',
-      country: '',
-      image: '',
-      date: 0,
-      temperature: 0,
-      description: '',
-    }
+
   }
 
   ngOnInit() {
-    this.weatherService.getCurrentWeather('Paris', 'FR').subscribe(
-      (data) => this.current = data)
+    this.weatherService.currentWeather.subscribe(data => {
+      (this.current = data)
+    })
   }
-
 
 
 }

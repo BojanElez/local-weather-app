@@ -1,0 +1,5 @@
+<input matInput placeholder="Enter city or zip" aria-label="City or zip" [(ngModel)]="model.search"
+    (ngModelChange)="doSearch($event)" minlength="2" name="search" #search="ngModel" />
+<mat-error *ngIf="search.invalid">
+    Type more than one character
+</mat-error>

@@ -1,13 +1,54 @@
-<div *ngIf="current">
-    <div>
-        <span>{{ current?.city }}, {{ current?.country }} </span>
-        <span>{{ current.date | date: 'fullDate'}}</span>
+<div *ngIf="currentStatus">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="66%" class="mat-title mat-display-2 no-margin">
+            {{ current?.city }}, {{ current?.country }}
+        </div>
+        <div fxFlex="66%" class="right mat-subheading-2 no-margin">
+            {{ current.date | date: 'fullDate'}}
+        </div>
     </div>
-    <div>
-        <img src="" alt="">
-        <span>{{current?.temperature | number: '1.0-0'  }} &#8451; </span>
+    <div fxLayout="row">
+        <div fxFlex="66%">
+            <img style="zoom: 175%" [src]='current?.image' alt="{{current?.name }}">
+        </div>
+        <div fxFlex class="right mat-display-1 no-margin">
+            <span>{{current?.temperature | number: '1.0-0'  }} &#8451; </span>
+        </div>
     </div>
-    <div>
+    <div fxLayoutAlign="center" class="mat-caption">
         <span> {{current?.description }} </span>
+    </div>
+</div>
+<div *ngIf="currentLoc">
+    <div fxLayout="row">
+        Your current Location
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="66%" class="mat-title mat-display-2 no-margin">
+            {{ currentLoc?.city }}, {{ currentLoc?.country }}
+        </div>
+        <div fxFlex="66%" class="right mat-subheading-2 no-margin">
+            {{ currentLoc.date | date: 'fullDate'}}
+        </div>
+    </div>
+
+    <div fxLayout="row">
+        <div fxFlex="66%">
+            <img style="zoom: 175%" [src]='current?.image' alt="{{current?.name }}">
+        </div>
+        <div fxFlex class="right mat-display-1 no-margin">
+            <span>{{currentLoc?.temperature | number: '1.0-0'  }} &#8451; </span>
+        </div>
+    </div>
+    <div fxLayoutAlign="center" class="mat-caption">
+        <span> {{currentWeatherLoc?.description }} </span>
+    </div>
+    <div fxLayout="row">
+        <div class="mat-title">
+            humidity : {{ currentLoc?.humidity}}
+        </div>
+    </div>
+    <div fxLayoutAlign="center" class="mat-caption">
+        <span> {{currentWeatherLoc?.description }} </span>
     </div>
 </div>

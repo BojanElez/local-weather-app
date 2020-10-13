@@ -1,9 +1,30 @@
-<div style="text-align: center;">
-  <h1></h1>
-  <div> Your city, your forecast, right now</div>
-  <h2>Current Weather</h2>
-  <app-current-weather></app-current-weather>
-</div>
-<mat-toolbar>
+<mat-toolbar color="warn">
   <span>Local weather app</span>
 </mat-toolbar>
+<div fxLayoutAlign="center">
+  <div class="mat-capiton vertical-margin"> Your city, your forecast, right now</div>
+</div>
+<div fxLayoutAlign="center">
+  <app-city-search (searchEvent)="doSearch($event)"></app-city-search>
+</div>
+<div fxLayout=row>
+  <div fxFlex></div>
+  <mat-card fxFlex="500px">
+    <mat-card-header class="mat-typography">
+      <mat-card-title>
+        <h2 class="mat-headline"> Current Weather</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container *ngIf="!currentStatus">
+        <app-current-weather [currentLoc]="currentWeatherLoc" [currentStatus]="currentStatus">
+        </app-current-weather>
+      </ng-container>
+      <ng-container *ngIf="currentStatus">
+        <app-current-weather [current]="currentWeather" [currentStatus]="currentStatus" [errorMessage]="errorMessage">
+        </app-current-weather>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+  <div fxFlex></div>
+</div>
