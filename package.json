@@ -51,8 +51,8 @@
     "typescript": "~4.0.2"
   },
   "config": {
-    "imageRepo": "BojanElez/local-weather-app",
-    "imageName": "local-weather-app",
+    "imageRepo": "BojanElez/weather-demo",
+    "imageName": "weather-demo",
     "imagePort": "8080"
   }
 }
